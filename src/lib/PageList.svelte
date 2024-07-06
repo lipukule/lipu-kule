@@ -54,12 +54,24 @@
 	export let lang: string
 	export let root: string
 
-	const prefix = lang === 'tok' ? '' : '/sp/'
+	const prefix = lang === 'tok' ? '/' : '/sp/'
 </script>
 
 {#each data as file}
 	{@const variant = file[lang]}
     <div class="rounded-lg bg-{poki[variant.matter.kule]} dark:bg-{poki[variant.matter.kule]}/25">
+    	{#if variant.matter.thumbnail}
+        <div class="rounded-t-lg h-48 w-full bg-black/10 backdrop-saturate-150 relative text-white">
+            <img class="rounded-t-lg h-48 w-full object-cover absolute -z-20" src="{variant.matter.thumbnail}" alt="Thumbnail"/>
+            <div class="rounded-t-lg h-48 w-full absolute -z-10 bg-black/40"></div>
+            <div class="flex px-4 pt-4 gap-4">
+                {#each variant.matter.janpali as pali}
+                <address class="not-italic">{i18n[lang]['jan-pali'][pali]}&nbsp;</address>
+                {/each}
+            </div>
+            <h2 class="px-4 font-bold text-xl"><a href={`${prefix}${root}/` + BimapOps.getValue(slugs, file.idx)}>{variant.matter.title}</a></h2>
+        </div>
+    	{:else}
         <div class="rounded-t-lg h-48 w-full bg-black/10 backdrop-saturate-150">
             <div class="flex px-4 pt-4 gap-4">
                 {#each variant.matter.janpali as pali}
@@ -68,6 +80,7 @@
             </div>
             <h2 class="px-4 font-bold text-xl"><a href={`${prefix}${root}/` + BimapOps.getValue(slugs, file.idx)}>{variant.matter.title}</a></h2>
         </div>
+    	{/if}
         <p class="px-4 pt-2 text-gray-800 dark:text-white/70">
             {variant.summary}
         </p>

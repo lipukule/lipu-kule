@@ -10,6 +10,7 @@
     const prefix = data.lang === 'tok' ? '' : '/sp'
 </script>
 
+<svelte:head><title>{data.file.matter.title} | lipu kule</title></svelte:head>
 <div class="flex justify-center">
 	<div class="w-full max-w-2xl px-4">
 		<div class="flex gap-4">
@@ -17,6 +18,9 @@
 		<span>{i18n[data.lang].list['nanpa-nimi'].format({ nanpa: data.file.wordCount })}</span>
 		</div>
 		<h2 class="font-bold text-3xl">{data.file.matter.title}</h2>
+    	{#if data.file.matter.thumbnail}
+	    <img class="rounded-lg h-48 w-full object-cover" src="{data.file.matter.thumbnail}" alt="Thumbnail" />
+    	{/if}
 		<div class="prose prose-lg dark:prose-invert">
 			{@html data.file.content}
 		</div>

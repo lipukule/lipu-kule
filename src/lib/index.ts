@@ -8,6 +8,7 @@ export type FrontMatter = {
 	kule: string
 	poki: string[]
 	summary?: string
+	thumbnail?: string
 }
 
 export type File = {

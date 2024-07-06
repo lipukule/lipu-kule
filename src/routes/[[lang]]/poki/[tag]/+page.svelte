@@ -12,6 +12,7 @@
     const ijoj = ijo.map(x => ({ nimi: x, kule: poki[x] }))
 </script>
 
+<svelte:head><title>#{data.poki} | lipu kule</title></svelte:head>
 <div class="flex justify-center">
     <div class="max-w-screen-2xl px-8 w-full">
         <div class="prose dark:prose-invert">

@@ -50,7 +50,7 @@
 >
 	<header class="flex flex-row justify-between p-6">
 		<div class="flex flex-row space-x-4">
-			<a href="{data.lang === 'tok' ? '' : '/sp'}"><h1>{i18n[data.lang].header['lipu-kule']}</h1></a>
+			<a href="{data.lang === 'tok' ? '/' : '/sp'}"><h1>{i18n[data.lang].header['lipu-kule']}</h1></a>
 			<!-- <a onclick="opensearch()"><h1>{{ i18n "header.ilo-alasa" }}</h1></a> -->
 		</div>
 		<a href="/mi/o-kama-sitelen-e-lipu-kule/"><h1>{i18n[data.lang].header['o-kama-sitelen']}</h1></a

@@ -9,4 +9,5 @@
     })
 </script>
 
+<svelte:head><title>lipu kule</title></svelte:head>
 <FrontPage data={data}/>

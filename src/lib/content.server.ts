@@ -21,6 +21,7 @@ const frontMatterSchema = object({
 	kule: string(),
 	poki: array(string()),
 	summary: optional(string()),
+	thumbnail: optional(string()),
 })
 
 async function load() {
