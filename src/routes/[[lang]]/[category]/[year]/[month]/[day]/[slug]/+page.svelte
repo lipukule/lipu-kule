@@ -1,0 +1,35 @@
+<script lang="ts">
+	import { i18n } from '$lib/i18n';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+</script>
+
+<div class="flex justify-center">
+	<div class="w-full max-w-2xl px-4">
+		<div class="flex gap-4">
+			<address class="not-italic">{i18n[data.lang].list['jan-pali'].format({ janpali: data.file.matter.janpali.map(x => i18n[data.lang]['jan-pali'][x]).join("　")})}</address>
+		<span>{i18n[data.lang].list['nanpa-nimi'].format({ nanpa: data.file.wordCount })}</span>
+		</div>
+		<h2 class="font-bold text-3xl">{data.file.matter.title}</h2>
+		<div class="prose prose-lg dark:prose-invert">
+			{@html data.file.content}
+		</div>
+		<div class="w-full flex justify-between">
+			{#if data.next}
+			<a class="p-2 bg-black/10 backdrop-saturate-150 rounded-lg" href={data.next.url}>
+				{i18n[data.lang].previous}{data.next.title}
+			</a>
+			{:else}
+			<div></div>
+			{/if}
+			{#if data.prev}
+			<a class="p-2 bg-black/10 backdrop-saturate-150 rounded-lg" href="{data.prev.url}">
+				{i18n[data.lang].next}{data.prev.title}
+			</a>
+			{:else}
+			<div></div>
+			{/if}
+		</div>
+	</div>
+</div>
