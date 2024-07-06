@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { ijo, poki, type Bimap, type Files } from '$lib';
+	import { ijo, poki, type Bimap, type SummaryFiles } from '$lib';
 	import PageList from '$lib/PageList.svelte';
 	import { i18n } from './i18n';
 
     export let data: {
-        files: (Files & { idx: number })[]
+        files: (SummaryFiles & { idx: number })[]
         slugs: Bimap<string, number>
         tagSlugs: Bimap<string, string>
         pageNumber: number

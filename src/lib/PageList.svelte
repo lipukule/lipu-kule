@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { poki, type Files, type Bimap, BimapOps } from "$lib";
+	import { poki, type Bimap, BimapOps, type SummaryFiles } from "$lib";
 	import { i18n } from "./i18n";
 
 	const classes = `
@@ -48,7 +48,7 @@
 	border-unu
 	`
 
-	export let data: (Files & { idx: number })[]
+	export let data: (SummaryFiles & { idx: number })[]
 	export let slugs: Bimap<string, number>
 	export let tagSlugs: Bimap<string, string>
 	export let lang: string

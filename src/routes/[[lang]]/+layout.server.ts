@@ -16,3 +16,5 @@ export const load: LayoutServerLoad = async ({ params }) => {
 		kule: kule ? poki[kule] : undefined,
 	}
 }
+
+export const prerender = true

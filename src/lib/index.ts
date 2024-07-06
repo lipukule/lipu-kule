@@ -19,9 +19,31 @@ export type File = {
 	summary: string
 }
 
+export type SummaryFile = {
+	matter: FrontMatter
+	summary: string
+	date: Date
+	content?: never
+}
+
+export function truncate({ matter, summary, date }: File): SummaryFile {
+	return { matter, summary, date }
+}
+
 export type Files = {
 	[language: string]: File
 }
+
+export type SummaryFiles = {
+	[language: string]: SummaryFile
+}
+
+export function truncateFiles(files: Files): SummaryFiles {
+	return Object.fromEntries(Object.entries(files).map(([k, v]) => [k, truncate(v)]))
+}
+
+type Slugged = string & { __slugged: unknown }
+type Raw = string & { __raw: unknown }
 
 export type Index = {
 	files: Files[]
@@ -35,7 +57,7 @@ export type Sorted = {
 
 export type Tagged = {
 	tags: Map<string, Set<number>>
-	tagSlugs: Bimap<string, string>
+	tagSlugs: Bimap<Slugged, Raw>
 }
 
 export function makeIndex(): Index {

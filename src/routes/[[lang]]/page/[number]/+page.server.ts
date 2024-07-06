@@ -1,1 +1,1 @@
-export { load } from '$lib/FrontPage'
+export { load, entries } from '$lib/FrontPage'
