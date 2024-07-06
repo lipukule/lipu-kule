@@ -6,6 +6,7 @@
     export let data: {
         files: (Files & { idx: number })[]
         slugs: Bimap<string, number>
+        tagSlugs: Bimap<string, string>
         pageNumber: number
         pages: number
         language: string
@@ -60,7 +61,7 @@
 
 <div class="flex justify-center">
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 px-8 max-w-screen-2xl">
-        <PageList data={data.files} slugs={data.slugs} lang={data.language} root="post"/>
+        <PageList data={data.files} slugs={data.slugs} lang={data.language} tagSlugs={data.tagSlugs} root="post"/>
     </div>
 </div>
 

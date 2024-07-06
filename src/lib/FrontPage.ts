@@ -14,6 +14,7 @@ export async function load({ params }: { params: {
 	return {
 		files: pageIndices.map(idx => ({ ...index.files[idx], idx } as Files & { idx: number })),
 		slugs: BimapOps.filterValue(index.slugs, idx => pageIndices.includes(idx)),
+		tagSlugs: index.tagSlugs,
 		pageNumber: page,
 		pages: Math.ceil(pagesOfLanguage.length / pageSize),
 		language: params.lang ?? 'tok',

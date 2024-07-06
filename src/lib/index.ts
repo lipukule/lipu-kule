@@ -1,5 +1,7 @@
 // place files you want to import through the `$lib` alias in this folder.
 
+import slugify from "@sindresorhus/slugify"
+
 export type FrontMatter = {
 	title: string
 	janpali: string[]
@@ -30,8 +32,32 @@ export type Sorted = {
 	filesByDate: number[]
 }
 
+export type Tagged = {
+	tags: Map<string, Set<number>>
+	tagSlugs: Bimap<string, string>
+}
+
 export function makeIndex(): Index {
 	return { files: [], slugs: BimapOps.make(), basenames: BimapOps.make() }
+}
+
+export function makeTag(index: Readonly<Index>): Tagged {
+	const tagged: Tagged = { tags: new Map(), tagSlugs: BimapOps.make() }
+	index.files.forEach((files, idx) => {
+		const tags = new Set<string>()
+		Object.values(files).forEach((file) => {
+			file.matter.poki.forEach(x => tags.add(x))
+		})
+		for (const tag of tags) {
+			if (!tagged.tags.has(tag)) {
+				tagged.tags.set(tag, new Set())
+			}
+			tagged.tags.get(tag)!.add(idx)
+			const slugged = slugify(tag)
+			BimapOps.set(tagged.tagSlugs, slugged, tag)
+		}
+	})
+	return tagged
 }
 
 export function makeSort(index: Readonly<Index>): Sorted {

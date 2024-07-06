@@ -16,7 +16,7 @@
     <div class="max-w-screen-2xl px-8 w-full">
         <div class="prose dark:prose-invert">
             <h1 class="mb-0">
-                {i18n[data.language].list.kule.format({ kule: i18n[data.language].kule[data.kule] })}
+                #{i18n[data.language].poki[data.poki]}
             </h1>
 
             <p class="mt-0">

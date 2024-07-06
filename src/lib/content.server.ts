@@ -10,7 +10,7 @@ import path from 'node:path'
 import { object, string, parse, array, type InferOutput, optional } from 'valibot'
 import slugify from '@sindresorhus/slugify'
 import { countWords } from 'alfaaz'
-import { makeIndex, getOrCreateByBasename, makeSort, BimapOps, type Index, type Sorted, truncateToSentence } from '$lib'
+import { makeIndex, getOrCreateByBasename, makeSort, BimapOps, type Index, type Sorted, truncateToSentence, type Tagged, makeTag } from '$lib'
 import stripMarkdown from 'strip-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -25,7 +25,7 @@ const frontMatterSchema = object({
 
 async function load() {
 	const categories = await fs.promises.readdir(`./src/content/`)
-	const categoricalIndex: Record<string, Index & Sorted> = {}
+	const categoricalIndex: Record<string, Index & Sorted & Tagged> = {}
 	for (const category of categories) {
 		const files = await fs.promises.readdir(`./src/content/${category}`)
 
@@ -85,7 +85,7 @@ async function load() {
 			}
 		}
 
-		categoricalIndex[category] = { ...index, ...makeSort(index) }
+		categoricalIndex[category] = { ...index, ...makeSort(index), ...makeTag(index) }
 	}
 
 	return categoricalIndex

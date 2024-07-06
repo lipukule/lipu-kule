@@ -50,6 +50,7 @@
 
 	export let data: (Files & { idx: number })[]
 	export let slugs: Bimap<string, number>
+	export let tagSlugs: Bimap<string, string>
 	export let lang: string
 	export let root: string
 
@@ -72,7 +73,7 @@
         </p>
             <div class="px-4 pt-2 pb-4">
                 {#each variant.matter.poki as poki}
-                    <a class="bg-black/10 backdrop-saturate-150 px-2 py-1 rounded-full" href="{prefix}poki/{poki}">#{i18n[lang]['poki'][poki]}</a>{' '}
+                    <a class="bg-black/10 backdrop-saturate-150 px-2 py-1 rounded-full" href="{prefix}poki/{BimapOps.getValue(tagSlugs, poki)}">#{i18n[lang]['poki'][poki]}</a>{' '}
                 {/each}
             </div>
     </div>
