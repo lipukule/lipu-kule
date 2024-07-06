@@ -79,7 +79,7 @@ async function load() {
 				summary: result.summary ?? truncateToSentence(String(plaintext), 70),
 			}
 			const slug = slugify(result.title)
-			if (slug !== '') {
+			if (language !== 'sp') {
 				const fullSlug = [date.getUTCFullYear(), (date.getUTCMonth() + 1).toString().padStart(2, '0'), (date.getUTCDate()).toString().padStart(2, '0'), slug].join("/")
 				BimapOps.set(index.slugs, fullSlug, fileIDX)
 			}

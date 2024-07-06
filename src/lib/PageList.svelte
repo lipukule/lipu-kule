@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { poki, type Files, type Bimap, BimapOps } from "$lib";
+	import { i18n } from "./i18n";
 
 	const classes = `
 	bg-lojunu
@@ -51,6 +52,8 @@
 	export let slugs: Bimap<string, number>
 	export let lang: string
 	export let root: string
+
+	const prefix = lang === 'tok' ? '' : '/sp/'
 </script>
 
 {#each data as file}
@@ -59,17 +62,17 @@
         <div class="rounded-t-lg h-48 w-full bg-black/10 backdrop-saturate-150">
             <div class="flex px-4 pt-4 gap-4">
                 {#each variant.matter.janpali as pali}
-                <address class="not-italic">{pali}&nbsp;</address>
+                <address class="not-italic">{i18n[lang]['jan-pali'][pali]}&nbsp;</address>
                 {/each}
             </div>
-            <h2 class="px-4 font-bold text-xl"><a href={`/${root}/` + BimapOps.getValue(slugs, file.idx)}>{variant.matter.title}</a></h2>
+            <h2 class="px-4 font-bold text-xl"><a href={`${prefix}${root}/` + BimapOps.getValue(slugs, file.idx)}>{variant.matter.title}</a></h2>
         </div>
         <p class="px-4 pt-2 text-gray-800 dark:text-white/70">
             {variant.summary}
         </p>
             <div class="px-4 pt-2 pb-4">
                 {#each variant.matter.poki as poki}
-                    <a class="bg-black/10 backdrop-saturate-150 px-2 py-1 rounded-full" href="#a">#{poki}</a>{' '}
+                    <a class="bg-black/10 backdrop-saturate-150 px-2 py-1 rounded-full" href="{prefix}poki/{poki}">#{i18n[lang]['poki'][poki]}</a>{' '}
                 {/each}
             </div>
     </div>

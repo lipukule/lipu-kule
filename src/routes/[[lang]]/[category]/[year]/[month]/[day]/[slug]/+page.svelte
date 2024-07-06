@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n';
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+    onMount(() => {
+        window.document.documentElement.lang = data.lang
+    })
+    const prefix = data.lang === 'tok' ? '' : '/sp'
 </script>
 
 <div class="flex justify-center">
@@ -17,14 +22,14 @@
 		</div>
 		<div class="w-full flex justify-between">
 			{#if data.next}
-			<a class="p-2 bg-black/10 backdrop-saturate-150 rounded-lg" href={data.next.url}>
+			<a class="p-2 bg-black/10 backdrop-saturate-150 rounded-lg" href={prefix}{data.next.url}>
 				{i18n[data.lang].previous}{data.next.title}
 			</a>
 			{:else}
 			<div></div>
 			{/if}
 			{#if data.prev}
-			<a class="p-2 bg-black/10 backdrop-saturate-150 rounded-lg" href="{data.prev.url}">
+			<a class="p-2 bg-black/10 backdrop-saturate-150 rounded-lg" href="{prefix}{data.prev.url}">
 				{i18n[data.lang].next}{data.prev.title}
 			</a>
 			{:else}

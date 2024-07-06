@@ -41,26 +41,28 @@ export function makeSort(index: Readonly<Index>): Sorted {
 	return { filesByDate }
 }
 
-export function next(index: Sorted, file: number): number | undefined {
-	const idx = index.filesByDate.findIndex(x => x === file)
+export function next(index: Index & Sorted, file: number, language: string): number | undefined {
+	const theseFiles = index.filesByDate.filter(x => language in index.files[x])
+	const idx = theseFiles.findIndex(x => x === file)
 	if (idx === -1) {
 		return undefined
 	}
-	if (idx+1 >= index.filesByDate.length) {
+	if (idx+1 >= theseFiles.length) {
 		return undefined
 	}
-	return idx+1
+	return theseFiles[idx+1]
 }
 
-export function prev(index: Sorted, file: number): number | undefined {
-	const idx = index.filesByDate.findIndex(x => x === file)
+export function prev(index: Index & Sorted, file: number, language: string): number | undefined {
+	const theseFiles = index.filesByDate.filter(x => language in index.files[x])
+	const idx = theseFiles.findIndex(x => x === file)
 	if (idx === -1) {
 		return undefined
 	}
 	if (idx-1 < 0) {
 		return undefined
 	}
-	return idx-1
+	return theseFiles[idx-1]
 }
 
 export function getOrCreateByBasename(index: Index, basename: string): number {

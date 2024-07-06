@@ -18,7 +18,7 @@ const sp = {
     "musi": "󱤻",
     "lon": "󱤬",
     "ante": "󱤆"
-  },
+  } as Record<string, string>,
   "header": {
     "lipu-kule": "󱤪󱦖󱤞",
     "ilo-alasa": "󱤎󱦖󱤃",
@@ -120,7 +120,13 @@ const sp = {
   } as Record<string, string>,
   "lanpan": {
     "other": "󱥶󱤉󱤌󱥧󱤆󱤊󱤖󱤓󱤉󱥆󱤙󱥵"
-  }
+  },
+  "pagination": {
+    "open": "󱥇",
+    "sin": "󱥝",
+    "majuna": "󱦢",
+    "pini": "󱥐",
+  },
 }
 
 const tok = {
@@ -141,7 +147,7 @@ const tok = {
     "musi": "musi",
     "lon": "lon",
     "ante": "ante"
-  },
+  } as Record<string, string>,
   "header": {
     "lipu-kule": "lipu kule",
     "ilo-alasa": "ilo alasa",
@@ -243,7 +249,13 @@ const tok = {
   } as Record<string, string>,
   "lanpan": {
     "other": "weka e ijo tan ante en kama jo e ona kepeken wawa"
-  }
+  },
+  "pagination": {
+    "open": "open",
+    "sin": "sin",
+    "majuna": "majuna",
+    "pini": "pini",
+  },
 }
 
 tok satisfies typeof sp
