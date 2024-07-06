@@ -34,14 +34,14 @@
 <div
 	class={data.kule
 		? `
-	bg-fixed bg-gradient-to-tr dark:text-white
+	bg-fixed bg-gradient-to-tr dark:text-white overflow-auto h-screen w-screen
 	bg-cream
 	from-cream via-cream to-${data.kule}
 	dark:bg-dark-cream
 	dark:from-dark-cream dark:via-dark-cream dark:to-${data.kule}/25
 	`
 		: `
-	bg-fixed bg-gradient-to-tr dark:text-white
+	bg-fixed bg-gradient-to-tr dark:text-white overflow-auto h-screen w-screen
 	bg-cream
 	from-cream-orange via-cream to-cream-red
 	dark:bg-dark-cream
