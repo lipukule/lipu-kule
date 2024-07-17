@@ -38,6 +38,8 @@ const sp = {
   },
   "poki": {
     "moku": "󱤶",
+    "pan linja": "󱥋󱤩",
+    "kili loje": "󱤚󱤫",
     "moku waso": "󱤶󱥴",
     "akesi": "󱤁",
     "ante lawa": "󱤆󱤤",
@@ -116,7 +118,8 @@ const sp = {
     "kala pona Tonyu": "󱤔󱦖󱥔󱦐󱥪󱥅󱥃󱤐󱥱󱦑",
     "jan Ana": "󱤑Ana",
     "waso pimeja": "󱥴‍󱥏",
-    "jan pali pi lipu kule": "󱤑󱥉󱥍󱦗󱤪󱦖󱤞󱦘"
+    "jan pali pi lipu kule": "󱤑󱥉󱥍󱦗󱤪󱦖󱤞󱦘",
+    "jan Asukata": "󱤑󱦐󱤆󱥤󱦜󱤕󱤈󱥭󱤄󱦑",
   } as Record<string, string>,
   "lanpan": {
     "other": "󱥶󱤉󱤌󱥧󱤆󱤊󱤖󱤓󱤉󱥆󱤙󱥵"
@@ -167,6 +170,8 @@ const tok = {
   },
   "poki": {
     "moku": "moku",
+    "pan linja": "pan linja",
+    "kili loje": "kili loje",
     "moku waso": "moku waso",
     "akesi": "akesi",
     "ante lawa": "ante lawa",
@@ -245,7 +250,8 @@ const tok = {
     "kala pona Tonyu": "kala pona Tonyu",
     "jan Ana": "jan Ana",
     "waso pimeja": "waso pimeja",
-    "jan pali pi lipu kule": "jan pali pi lipu kule"
+    "jan pali pi lipu kule": "jan pali pi lipu kule",
+    "jan Asukata": "jan Asukata",
   } as Record<string, string>,
   "lanpan": {
     "other": "weka e ijo tan ante en kama jo e ona kepeken wawa"
